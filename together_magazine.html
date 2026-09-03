@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TOGETHER Magazine | Collector's Edition - Yashasvi & Aryan</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Cinzel:wght@400;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            rose: {
+              50: '#fff1f2',
+              100: '#ffe4e6',
+              200: '#fecdd3',
+              300: '#fda4af',
+              400: '#fb7185',
+              500: '#f43f5e',
+              600: '#e11d48',
+              800: '#9f1239',
+              900: '#881337',
+            },
+            champagne: '#FBF9F4',
+            paper: '#F4EFE6',
+            blush: '#F5E6E3',
+            gold: '#C5A059',
+            goldLight: '#E6CA65',
+            charcoal: '#141213',
+            burgundy: '#3B0B13'
+          },
+          fontFamily: {
+            serif: ['"Bodoni Moda"', '"Playfair Display"', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['"Cinzel"', 'serif'],
+            script: ['"Alex Brush"', 'cursive']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #0A0909;
+      color: #141213;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 0);
+      background-size: 24px 24px;
+    }
+    
+    .paper-texture {
+      background-color: #FAF7F0;
+      background-image: radial-gradient(#E8E2D5 0.75px, transparent 0.75px);
+      background-size: 12px 12px;
+    }
+
+    .magazine-page {
+      position: relative;
+      background-color: #FAF7F0;
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5), 0 0 1px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+    }
+
+    /* Print styling */
+    @media print {
+      body { background: white !important; padding: 0 !important; }
+      .no-print { display: none !important; }
+      .page-break { page-break-after: always; break-after: page; }
+      .magazine-page { 
+        margin: 0 !important; 
+        box-shadow: none !important; 
+        width: 100% !important; 
+        min-height: 100vh !important;
+        border-radius: 0 !important;
+      }
+    }
+
+    /* Magazine Center Spine Effect for Spread Mode */
+    .spine-shadow-left {
+      box-shadow: inset -15px 0 20px -10px rgba(0, 0, 0, 0.15);
+    }
+    .spine-shadow-right {
+      box-shadow: inset 15px 0 20px -10px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Editorial drop cap */
+    .drop-cap::first-letter {
+      font-family: 'Bodoni Moda', serif;
+      font-size: 4.2rem;
+      line-height: 0.8;
+      float: left;
+      margin-right: 0.65rem;
+      margin-top: 0.15rem;
+      color: #3B0B13;
+      font-weight: 700;
+    }
+
+    .text-gold-gradient {
+      background: linear-gradient(135deg, #A88132 0%, #E6CA65 50%, #916C23 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Custom scrollbars */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #141213;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #3B0B13;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+<body class="py-6 px-2 sm:px-6 min-h-screen">
+
+  <!-- MAIN MAGAZINE CONTAINER -->
+  <main id="magazineContainer" class="max-w-4xl mx-auto space-y-12 transition-all duration-500">
+
+    <!-- PAGE 1: HIGH-FASHION COVER PAGE -->
+    <section id="page-1" class="magazine-page page-break paper-texture rounded-3xl overflow-hidden min-h-[1080px] flex flex-col justify-between p-8 sm:p-14 border border-rose-200/60 relative">
+      <!-- Vignette / Soft Shadow Edges -->
+      <div class="absolute inset-0 bg-gradient-to-b from-black/5 via-transparent to-black/10 pointer-events-none"></div>
+
+      <!-- Top Magazine Header Meta -->
+      <div class="relative z-10 flex justify-between items-center border-b-2 border-charcoal/80 pb-4">
+        <div class="flex items-center space-x-3">
+          <span class="text-[11px] font-bold uppercase tracking-[0.3em] text-burgundy">SPECIAL ROMANCE ISSUE N° 01</span>
+        </div>
+        <div class="text-right flex items-center gap-4">
+          <span class="text-xs font-mono font-semibold text-gray-700">AUTUMN / WINTER 2026</span>
+          <span class="hidden sm:inline-block px-2 py-0.5 bg-burgundy text-champagne font-mono text-[10px] uppercase tracking-widest font-bold">USD $15.00 / INR ₹999</span>
+        </div>
+      </div>
+
+      <!-- Main Cover Banner (Masthead) -->
+      <div class="relative z-10 text-center my-6">
+        <h1 class="font-serif text-7xl sm:text-9xl font-black text-burgundy tracking-tight leading-none uppercase drop-shadow-sm select-none">
+          TOGETHER<span class="text-rose-600">.</span>
+        </h1>
+        <div class="flex items-center justify-center gap-4 mt-2">
+          <div class="h-px bg-burgundy/40 w-16"></div>
+          <p class="font-display text-xs sm:text-sm tracking-[0.4em] uppercase text-gray-800 font-semibold">The Yashasvi & Aryan Archives</p>
+          <div class="h-px bg-burgundy/40 w-16"></div>
+        </div>
+      </div>
+
+      <!-- Hero Visual Section with Magazine Headlines -->
+      <div class="relative z-10 grid grid-cols-1 md:grid-cols-12 gap-6 items-center my-auto">
+        
+        <!-- Left Teasers -->
+        <div class="md:col-span-3 space-y-6 text-left hidden md:block">
+          <div class="border-l-2 border-burgundy pl-3">
+            <span class="text-[9px] font-bold uppercase tracking-widest text-rose-800 font-mono">Exclusive Feature</span>
+            <h3 class="font-serif text-lg font-bold text-burgundy leading-tight mt-0.5">The "Devi" Chronicles</h3>
+            <p class="text-[11px] text-gray-600 mt-1 font-light">How spiritual devotion redefined modern long-distance love.</p>
+          </div>
+
+          <div class="border-l-2 border-gold pl-3">
+            <span class="text-[9px] font-bold uppercase tracking-widest text-gold font-mono">Data Synthesis</span>
+            <h3 class="font-serif text-base font-bold text-burgundy leading-tight mt-0.5">1,480+ Touches</h3>
+            <p class="text-[11px] text-gray-600 mt-1 font-light">Analyzing late-night notes, shared reels, and 11:11 wishes.</p>
+          </div>
+        </div>
+
+        <!-- Center Photo Cover Visual -->
+        <div class="md:col-span-6 relative">
+          <div class="aspect-[3/4] bg-burgundy rounded-2xl shadow-2xl p-2 border-2 border-white/80 relative overflow-hidden group">
+            <!-- Background Portrait Image -->
+            <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style="background-image: url('https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=1000&q=80');"></div>
+            
+            <!-- Dark Gradient Overlay for Readability -->
+            <div class="absolute inset-0 bg-gradient-to-t from-burgundy via-transparent to-black/30"></div>
+
+            <!-- Cover Overlay Badge -->
+            <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-mono font-bold tracking-widest text-burgundy shadow uppercase border border-burgundy/10">
+              Parallel Hearts Issue
+            </div>
+
+            <div class="relative z-10 text-white text-center mt-auto p-6 flex flex-col items-center">
+              <span class="text-xs font-script text-rose-300 text-2xl">Yashasvi & Aryan</span>
+              <h2 class="font-serif text-3xl font-bold tracking-wide mt-1 text-white">TWO SOULS, ONE FAITH</h2>
+              <p class="text-xs text-rose-100/90 font-light mt-2 italic max-w-xs">
+                "In every universe, across every mile, my sadhana starts and ends with you."
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Teasers -->
+        <div class="md:col-span-3 space-y-6 text-right hidden md:block">
+          <div class="border-r-2 border-burgundy pr-3">
+            <span class="text-[9px] font-bold uppercase tracking-widest text-rose-800 font-mono">Spiritual Bond</span>
+            <h3 class="font-serif text-lg font-bold text-burgundy leading-tight mt-0.5">Bound by 11:11</h3>
+            <p class="text-[11px] text-gray-600 mt-1 font-light">Tarot synchronicities, 111 & 555 energy in action.</p>
+          </div>
+
+          <div class="border-r-2 border-gold pr-3">
+            <span class="text-[9px] font-bold uppercase tracking-widest text-gold font-mono">The Ultimate Goal</span>
+            <h3 class="font-serif text-base font-bold text-burgundy leading-tight mt-0.5">A Prayer For Blessing</h3>
+            <p class="text-[11px] text-gray-600 mt-1 font-light">Looking forward to family acceptance and forever.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Authentic Barcode & Bottom Cover Banner -->
+      <div class="relative z-10 border-t-2 border-charcoal/80 pt-4 flex flex-wrap justify-between items-center text-xs text-gray-800">
+        <!-- Editorial Tag -->
+        <div>
+          <span class="font-bold tracking-wider uppercase text-[10px] text-burgundy font-mono">COLLECTOR'S PRINT EDITION</span>
+          <p class="font-serif italic text-sm text-charcoal">A Celebration of Love, Distance & Eternal Devotion</p>
+        </div>
+
+        <!-- Authentic Magazine Barcode -->
+        <div class="flex items-center space-x-3 bg-white p-2 rounded border border-gray-300 shadow-sm mt-2 sm:mt-0">
+          <div class="flex items-end h-8 space-x-0.5 font-mono">
+            <div class="w-0.5 h-full bg-black"></div>
+            <div class="w-1 h-full bg-black"></div>
+            <div class="w-0.5 h-full bg-black"></div>
+            <div class="w-1.5 h-full bg-black"></div>
+            <div class="w-0.5 h-full bg-black"></div>
+            <div class="w-1 h-full bg-black"></div>
+            <div class="w-2 h-full bg-black"></div>
+            <div class="w-0.5 h-full bg-black"></div>
+            <div class="w-1 h-full bg-black"></div>
+            <div class="w-1.5 h-full bg-black"></div>
+            <div class="w-0.5 h-full bg-black"></div>
+            <div class="w-1 h-full bg-black"></div>
+          </div>
+          <div class="text-[9px] font-mono leading-tight text-gray-700">
+            <div>ISSN 2026-1111</div>
+            <div class="font-bold">VOL. 01 #001</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 2: TABLE OF CONTENTS & EDITOR'S LETTER -->
+    <section id="page-2" class="magazine-page page-break paper-texture rounded-3xl overflow-hidden min-h-[1080px] p-8 sm:p-14 flex flex-col justify-between border border-rose-200/60">
+      <div>
+        <!-- Running Header -->
+        <div class="flex justify-between items-center border-b border-burgundy/20 pb-3 mb-8 text-xs text-gray-600 font-mono">
+          <span>TOGETHER MAGAZINE • VOLUME I</span>
+          <span class="font-bold text-burgundy">TABLE OF CONTENTS & EDITORIAL</span>
+          <span>PAGE 02</span>
+        </div>
+
+        <!-- Layout Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-10">
+
+          <!-- Left Column: Masthead & Editorial Credits -->
+          <div class="md:col-span-4 bg-blush/40 p-6 rounded-2xl border border-rose-200/80 space-y-6">
+            <div>
+              <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-rose-800 font-bold">THE MASTHEAD</span>
+              <h3 class="font-serif text-xl font-bold text-burgundy mt-1">Editorial Board</h3>
+              <p class="text-[11px] text-gray-500 font-light">Documenting the archives of Yashasvi & Aryan.</p>
+            </div>
+
+            <div class="space-y-3 text-xs border-t border-burgundy/10 pt-4">
+              <div>
+                <span class="text-[10px] font-mono uppercase text-gray-400">Editor-in-Chief</span>
+                <p class="font-serif font-bold text-burgundy">Aryan</p>
+              </div>
+              <div>
+                <span class="text-[10px] font-mono uppercase text-gray-400">Muse & Devi</span>
+                <p class="font-serif font-bold text-burgundy">Yashasvi Singh</p>
+              </div>
+              <div>
+                <span class="text-[10px] font-mono uppercase text-gray-400">Creative Direction</span>
+                <p class="font-serif text-gray-700">Parallel Hearts Studio</p>
+              </div>
+              <div>
+                <span class="text-[10px] font-mono uppercase text-gray-400">Primary Language</span>
+                <p class="font-serif text-gray-700">Reels, Notes & Late Night Prayers</p>
+              </div>
+              <div>
+                <span class="text-[10px] font-mono uppercase text-gray-400">Publication Date</span>
+                <p class="font-serif text-gray-700">September 2026 Edition</p>
+              </div>
+            </div>
+
+            <div class="p-4 bg-white/80 rounded-xl border border-rose-100 text-[11px] italic text-gray-600">
+              <i data-lucide="quote" class="w-4 h-4 text-rose-500 mb-1"></i>
+              "This journal was woven from real chat logs, shared reels, early morning reminders, and unshakeable faith."
+            </div>
+          </div>
+
+          <!-- Right Column: Editor's Note & Table of Contents -->
+          <div class="md:col-span-8 space-y-8">
+            
+            <!-- Editor's Note -->
+            <div>
+              <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-rose-800 font-bold">LETTER FROM THE HEART</span>
+              <h2 class="font-serif text-3xl font-bold text-burgundy mt-1">Welcome to Our Sanctuary</h2>
+              
+              <div class="mt-4 font-serif text-xs sm:text-sm text-gray-700 leading-relaxed space-y-3 text-justify">
+                <p class="drop-cap">
+                  Welcome to the inaugural edition of <em>TOGETHER</em>—a physical manifestation of a digital sanctuary built through patience, distance, and pure devotion. When two people decide that physical miles will not define their closeness, something extraordinary occurs: everyday communication transforms into sacred ritual.
+                </p>
+                <p>
+                  Inside these pages, you will find a curated record of our journey—from quantitative metrics of our daily check-ins to deep reflections on spiritual connection. May this volume serve as an enduring testament that true love does not falter under space or time.
+                </p>
+              </div>
+
+              <div class="mt-4 flex items-center justify-between border-t border-burgundy/10 pt-3">
+                <span class="font-script text-2xl text-burgundy">Aryan</span>
+                <span class="text-[10px] font-mono text-gray-400 uppercase">Founding Editor</span>
+              </div>
+            </div>
+
+            <!-- Table of Contents Section -->
+            <div class="border-t-2 border-burgundy pt-6">
+              <h3 class="font-serif text-xl font-bold text-burgundy mb-4 flex items-center gap-2">
+                <i data-lucide="list-ordered" class="w-4 h-4 text-rose-600"></i>
+                Issue Contents & Highlights
+              </h3>
+
+              <div class="space-y-3 font-serif">
+                <!-- Entry 1 -->
+                <div class="flex items-baseline justify-between border-b border-dotted border-gray-300 pb-1">
+                  <div class="flex items-baseline gap-3">
+                    <span class="text-xs font-mono font-bold text-rose-800">03</span>
+                    <span class="font-bold text-charcoal text-sm">Relationship Dashboard</span>
+                  </div>
+                  <span class="text-xs text-gray-500 font-mono">Page 03</span>
+                </div>
+                <p class="text-[11px] font-sans text-gray-500 pl-7">Spotify Wrapped-style relationship metrics and communication DNA.</p>
+
+                <!-- Entry 2 -->
+                <div class="flex items-baseline justify-between border-b border-dotted border-gray-300 pb-1 pt-1">
+                  <div class="flex items-baseline gap-3">
+                    <span class="text-xs font-mono font-bold text-rose-800">04</span>
+                    <span class="font-bold text-charcoal text-sm">Love in Numbers & Analytics</span>
+                  </div>
+                  <span class="text-xs text-gray-500 font-mono">Page 04</span>
+                </div>
+                <p class="text-[11px] font-sans text-gray-500 pl-7">Nickname frequency charts and peak activity hourly messaging breakdowns.</p>
+
+                <!-- Entry 3 -->
+                <div class="flex items-baseline justify-between border-b border-dotted border-gray-300 pb-1 pt-1">
+                  <div class="flex items-baseline gap-3">
+                    <span class="text-xs font-mono font-bold text-rose-800">05</span>
+                    <span class="font-bold text-charcoal text-sm">Emotional Journey & Milestones</span>
+                  </div>
+                  <span class="text-xs text-gray-500 font-mono">Page 05</span>
+                </div>
+                <p class="text-[11px] font-sans text-gray-500 pl-7">Chronological timeline of care notes, 11:11 wishes, and future prayers.</p>
+
+                <!-- Entry 4 -->
+                <div class="flex items-baseline justify-between border-b border-dotted border-gray-300 pb-1 pt-1">
+                  <div class="flex items-baseline gap-3">
+                    <span class="text-xs font-mono font-bold text-rose-800">06</span>
+                    <span class="font-bold text-charcoal text-sm">Cute Moments & Recreated Chats</span>
+                  </div>
+                  <span class="text-xs text-gray-500 font-mono">Page 06</span>
+                </div>
+                <p class="text-[11px] font-sans text-gray-500 pl-7">Original morning hydration check-ins and late-night message snapshots.</p>
+
+                <!-- Entry 5 -->
+                <div class="flex items-baseline justify-between border-b border-dotted border-gray-300 pb-1 pt-1">
+                  <div class="flex items-baseline gap-3">
+                    <span class="text-xs font-mono font-bold text-rose-800">07</span>
+                    <span class="font-bold text-charcoal text-sm">Feature Essay: The Sanctuary We Built</span>
+                  </div>
+                  <span class="text-xs text-gray-500 font-mono">Page 07</span>
+                </div>
+                <p class="text-[11px] font-sans text-gray-500 pl-7">Comprehensive narrative essay on distance, devotion, and long-term vision.</p>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Footer Running Head -->
+      <div class="border-t border-burgundy/20 pt-4 flex justify-between text-xs text-gray-500 font-mono">
+        <span>YASHASVI & ARYAN</span>
+        <span>TOGETHER MAGAZINE</span>
+      </div>
+    </section>
+
+    <!-- PAGE 3: RELATIONSHIP DASHBOARD -->
+    <section id="page-3" class="magazine-page page-break paper-texture rounded-3xl overflow-hidden min-h-[1080px] p-8 sm:p-14 flex flex-col justify-between border border-rose-200/60">
+      <div>
+        <!-- Page Header -->
+        <div class="flex justify-between items-center border-b border-burgundy/20 pb-3 mb-8 text-xs text-gray-600 font-mono">
+          <span>VOLUME I • DATA INSIGHTS</span>
+          <span class="font-bold text-burgundy uppercase">RELATIONSHIP DASHBOARD</span>
+          <span>PAGE 03</span>
+        </div>
+
+        <div class="mb-8">
+          <span class="text-[10px] font-mono text-rose-800 font-bold tracking-widest uppercase">QUANTITATIVE AUDIT</span>
+          <h2 class="font-serif text-4xl font-bold text-burgundy mt-1">Love In Digital Metrics</h2>
+          <p class="text-xs text-gray-600 mt-2 font-light max-w-2xl leading-relaxed">
+            A high-level quantitative synthesis of Yashasvi & Aryan's digital ecosystem. Every text, shared reel, morning check-in, and late-night reassurance cataloged into numbers.
+          </p>
+        </div>
+
+        <!-- Metric Grid -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-5 mb-8">
+          
+          <div class="bg-white p-5 rounded-2xl border border-rose-200/80 shadow-sm relative overflow-hidden group">
+            <div class="flex justify-between items-start text-rose-600 mb-2">
+              <i data-lucide="message-square-heart" class="w-5 h-5"></i>
+              <span class="text-[9px] font-mono text-gray-400">CHAT LOGS</span>
+            </div>
+            <div class="text-3xl font-serif font-bold text-burgundy">1,480+</div>
+            <p class="text-xs text-gray-600 mt-1 font-medium">Digital Touches</p>
+            <p class="text-[10px] text-gray-400 mt-0.5 italic">Messages & care notes</p>
+          </div>
+
+          <div class="bg-white p-5 rounded-2xl border border-rose-200/80 shadow-sm relative overflow-hidden group">
+            <div class="flex justify-between items-start text-rose-600 mb-2">
+              <i data-lucide="film" class="w-5 h-5"></i>
+              <span class="text-[9px] font-mono text-gray-400">EXCHANGE</span>
+            </div>
+            <div class="text-3xl font-serif font-bold text-burgundy">350+</div>
+            <p class="text-xs text-gray-600 mt-1 font-medium">Instagram Reels</p>
+            <p class="text-[10px] text-gray-400 mt-0.5 italic">Devotional & couple goals</p>
+          </div>
+
+          <div class="bg-white p-5 rounded-2xl border border-rose-200/80 shadow-sm relative overflow-hidden group">
+            <div class="flex justify-between items-start text-rose-600 mb-2">
+              <i data-lucide="sun" class="w-5 h-5"></i>
+              <span class="text-[9px] font-mono text-gray-400">HABIT</span>
+            </div>
+            <div class="text-3xl font-serif font-bold text-burgundy">100%</div>
+            <p class="text-xs text-gray-600 mt-1 font-medium">Hydration Checks</p>
+            <p class="text-[10px] text-gray-400 mt-0.5 italic">"Stay hydrated, college jaate..."</p>
+          </div>
+
+          <div class="bg-white p-5 rounded-2xl border border-rose-200/80 shadow-sm relative overflow-hidden group">
+            <div class="flex justify-between items-start text-rose-600 mb-2">
+              <i data-lucide="sparkles" class="w-5 h-5"></i>
+              <span class="text-[9px] font-mono text-gray-400">ALIGNMENT</span>
+            </div>
+            <div class="text-3xl font-serif font-bold text-burgundy">11:11</div>
+            <p class="text-xs text-gray-600 mt-1 font-medium">Frequent Wish Time</p>
+            <p class="text-[10px] text-gray-400 mt-0.5 italic">Synchronicity & prayers</p>
+          </div>
+
+          <div class="bg-white p-5 rounded-2xl border border-rose-200/80 shadow-sm relative overflow-hidden group">
+            <div class="flex justify-between items-start text-rose-600 mb-2">
+              <i data-lucide="crown" class="w-5 h-5"></i>
+              <span class="text-[9px] font-mono text-gray-400">HONORIFIC</span>
+            </div>
+            <div class="text-3xl font-serif font-bold text-burgundy">"Devi"</div>
+            <p class="text-xs text-gray-600 mt-1 font-medium">Aryan's Title for Her</p>
+            <p class="text-[10px] text-gray-400 mt-0.5 italic">Highest spiritual honor</p>
+          </div>
+
+          <div class="bg-white p-5 rounded-2xl border border-rose-200/80 shadow-sm relative overflow-hidden group">
+            <div class="flex justify-between items-start text-rose-600 mb-2">
+              <i data-lucide="clock" class="w-5 h-5"></i>
+              <span class="text-[9px] font-mono text-gray-400">PEAK ACTIVITY</span>
+            </div>
+            <div class="text-3xl font-serif font-bold text-burgundy">4:00 AM</div>
+            <p class="text-xs text-gray-600 mt-1 font-medium">Dawn Whispers</p>
+            <p class="text-[10px] text-gray-400 mt-0.5 italic">Deep late-night intimacy</p>
+          </div>
+
+        </div>
+
+        <!-- Highlight Box -->
+        <div class="bg-gradient-to-r from-burgundy via-rose-950 to-burgundy text-white rounded-2xl p-6 sm:p-8 shadow-xl relative overflow-hidden border border-rose-500/20">
+          <div class="relative z-10 grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+            <div class="md:col-span-8">
+              <span class="text-[10px] font-mono font-bold uppercase tracking-widest text-rose-300">COMMUNICATION DNA ARCHTYPE</span>
+              <h3 class="font-serif text-2xl font-semibold mt-1 text-white">Reel-First Romance & Daily Care Paragraphs</h3>
+              <p class="text-xs text-rose-100/80 mt-2 leading-relaxed font-light">
+                Aryan frequently uses emotional Instagram reels (couples goals, period care guides, LDR advice, devotional poetry) as love letters to bridge distance and express deep care.
+              </p>
+            </div>
+            <div class="md:col-span-4 bg-white/10 backdrop-blur-md p-4 rounded-xl border border-white/10 text-center">
+              <span class="text-[10px] font-mono text-rose-200 uppercase tracking-widest">Primary Language</span>
+              <div class="text-xl font-bold font-serif text-white mt-1">Reels + Devotion</div>
+              <p class="text-[10px] text-rose-300/80 mt-1">High Emotional Safety Index</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Footer -->
+      <div class="border-t border-burgundy/20 pt-4 flex justify-between text-xs text-gray-500 font-mono">
+        <span>YASHASVI & ARYAN</span>
+        <span>TOGETHER MAGAZINE</span>
+      </div>
+    </section>
+
+    <!-- PAGE 4: LOVE IN NUMBERS & NICKNAME ANALYTICS -->
+    <section id="page-4" class="magazine-page page-break paper-texture rounded-3xl overflow-hidden min-h-[1080px] p-8 sm:p-14 flex flex-col justify-between border border-rose-200/60">
+      <div>
+        <!-- Page Header -->
+        <div class="flex justify-between items-center border-b border-burgundy/20 pb-3 mb-8 text-xs text-gray-600 font-mono">
+          <span>VOLUME I • ANALYTICS</span>
+          <span class="font-bold text-burgundy uppercase">NICKNAMES & TIMING</span>
+          <span>PAGE 04</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+          
+          <!-- Nicknames Breakdown -->
+          <div class="bg-white p-6 rounded-2xl border border-rose-200/80 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-center border-b border-gray-100 pb-3 mb-4">
+                <h3 class="font-serif text-xl font-bold text-burgundy flex items-center gap-2">
+                  <i data-lucide="tag" class="w-4 h-4 text-rose-600"></i> Nickname Distribution
+                </h3>
+                <span class="text-[10px] font-mono text-gray-400">CHATS & NOTES</span>
+              </div>
+              <p class="text-xs text-gray-500 mb-6">How Aryan addresses Yashasvi in daily conversations:</p>
+
+              <div class="space-y-4">
+                <div>
+                  <div class="flex justify-between text-xs font-semibold mb-1">
+                    <span class="text-burgundy font-serif font-bold">Devi / Devi Maa</span>
+                    <span class="text-rose-600 font-mono">38%</span>
+                  </div>
+                  <div class="w-full bg-rose-100 h-2 rounded-full overflow-hidden">
+                    <div class="bg-burgundy h-full rounded-full" style="width: 38%"></div>
+                  </div>
+                  <p class="text-[10px] text-gray-400 mt-1 italic">"My Devi lives so far, protecting her is my sadhana..."</p>
+                </div>
+
+                <div>
+                  <div class="flex justify-between text-xs font-semibold mb-1">
+                    <span class="text-burgundy font-serif font-bold">Meri Jaan / Jaanu</span>
+                    <span class="text-rose-600 font-mono">32%</span>
+                  </div>
+                  <div class="w-full bg-rose-100 h-2 rounded-full overflow-hidden">
+                    <div class="bg-rose-500 h-full rounded-full" style="width: 32%"></div>
+                  </div>
+                  <p class="text-[10px] text-gray-400 mt-1 italic">"Good morning meri jaan ❤️ stay hydrated..."</p>
+                </div>
+
+                <div>
+                  <div class="flex justify-between text-xs font-semibold mb-1">
+                    <span class="text-burgundy font-serif font-bold">Shonu / Dharma Pathni Jii</span>
+                    <span class="text-rose-600 font-mono">18%</span>
+                  </div>
+                  <div class="w-full bg-rose-100 h-2 rounded-full overflow-hidden">
+                    <div class="bg-rose-400 h-full rounded-full" style="width: 18%"></div>
+                  </div>
+                  <p class="text-[10px] text-gray-400 mt-1 italic">"Love u meri jannu shonu dharma pathni jii 🥰"</p>
+                </div>
+
+                <div>
+                  <div class="flex justify-between text-xs font-semibold mb-1">
+                    <span class="text-burgundy font-serif font-bold">My Girl / Wife</span>
+                    <span class="text-rose-600 font-mono">12%</span>
+                  </div>
+                  <div class="w-full bg-rose-100 h-2 rounded-full overflow-hidden">
+                    <div class="bg-gold h-full rounded-full" style="width: 12%"></div>
+                  </div>
+                  <p class="text-[10px] text-gray-400 mt-1 italic">"Happily committed to Yashasvi Singh..."</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-6 pt-3 border-t border-gray-100 text-[10px] text-gray-400 font-mono flex items-center justify-between">
+              <span>SAMPLE SIZE: ALL CHAT LOGS</span>
+              <span class="text-rose-600 font-bold">100% AFFECTION SCORE</span>
+            </div>
+          </div>
+
+          <!-- Time Distribution Visual -->
+          <div class="bg-white p-6 rounded-2xl border border-rose-200/80 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-center border-b border-gray-100 pb-3 mb-4">
+                <h3 class="font-serif text-xl font-bold text-burgundy flex items-center gap-2">
+                  <i data-lucide="clock" class="w-4 h-4 text-rose-600"></i> Messaging By Time
+                </h3>
+                <span class="text-[10px] font-mono text-gray-400">24-HR CYCLE</span>
+              </div>
+              <p class="text-xs text-gray-500 mb-4">Conversations peak during early mornings and quiet late-night hours.</p>
+              
+              <div class="h-48 relative">
+                <canvas id="timeDistributionChartPage4"></canvas>
+              </div>
+            </div>
+
+            <div class="mt-4 p-3 bg-blush/60 rounded-xl text-xs text-burgundy flex items-center gap-3 border border-rose-200/50">
+              <i data-lucide="moon" class="w-5 h-5 text-rose-600 flex-shrink-0"></i>
+              <span><strong>Night Owl Tendency:</strong> Key affection reels and voice note updates sent between 1:00 AM – 5:00 AM.</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Emoji & Word Palette -->
+        <div class="bg-white p-6 rounded-2xl border border-rose-200/80 shadow-sm">
+          <h3 class="font-serif text-xl font-bold text-burgundy mb-4 flex items-center gap-2">
+            <i data-lucide="smile" class="w-4 h-4 text-rose-600"></i> Signature Word & Emoji Palette
+          </h3>
+          <div class="flex flex-wrap gap-3 items-center justify-center p-6 bg-paper rounded-xl border border-rose-200/60">
+            <span class="text-3xl">❤️</span>
+            <span class="text-2xl font-serif font-bold text-burgundy">Devi</span>
+            <span class="text-3xl">🥹</span>
+            <span class="text-xs font-semibold bg-white px-3 py-1 rounded-full border border-rose-200 text-gray-700 shadow-sm">Stay Hydrated</span>
+            <span class="text-3xl">🧿</span>
+            <span class="text-xl font-serif italic text-rose-800 font-bold">Dharma Pathni</span>
+            <span class="text-3xl">🥰</span>
+            <span class="text-xs font-semibold bg-rose-100 px-3 py-1 rounded-full text-burgundy">11:11 Wish</span>
+            <span class="text-3xl">🫂</span>
+            <span class="text-lg font-serif font-bold text-burgundy">Shonu</span>
+            <span class="text-3xl">❣️</span>
+            <span class="text-xs font-medium bg-white px-3 py-1 rounded-full border border-rose-200 text-gray-600 shadow-sm">Overthink Mat Karna</span>
+            <span class="text-3xl">💌</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Footer -->
+      <div class="border-t border-burgundy/20 pt-4 flex justify-between text-xs text-gray-500 font-mono">
+        <span>YASHASVI & ARYAN</span>
+        <span>TOGETHER MAGAZINE</span>
+      </div>
+    </section>
+
+    <!-- PAGE 5: EMOTIONAL & MEMORY TIMELINE -->
+    <section id="page-5" class="magazine-page page-break paper-texture rounded-3xl overflow-hidden min-h-[1080px] p-8 sm:p-14 flex flex-col justify-between border border-rose-200/60">
+      <div>
+        <!-- Page Header -->
+        <div class="flex justify-between items-center border-b border-burgundy/20 pb-3 mb-8 text-xs text-gray-600 font-mono">
+          <span>VOLUME I • MILESTONES</span>
+          <span class="font-bold text-burgundy uppercase">EMOTIONAL TIMELINE</span>
+          <span>PAGE 05</span>
+        </div>
+
+        <div class="mb-6">
+          <span class="text-[10px] font-mono text-rose-800 font-bold tracking-widest uppercase">THE CHRONICLES</span>
+          <h2 class="font-serif text-4xl font-bold text-burgundy mt-1">Milestones of Faith & Distance</h2>
+          <p class="text-xs text-gray-600 mt-2 font-light max-w-xl">
+            A visual timeline of daily care, spiritual recognitions, tarot synchronicities, and prayers for family acceptance.
+          </p>
+        </div>
+
+        <!-- Vertical Timeline -->
+        <div class="relative border-l-2 border-burgundy/30 ml-4 sm:ml-8 pl-6 sm:pl-10 space-y-8 my-8">
+
+          <!-- Item 1 -->
+          <div class="relative">
+            <div class="absolute -left-[31px] sm:-left-[41px] top-0 w-5 h-5 rounded-full bg-rose-600 border-4 border-paper shadow"></div>
+            <div class="bg-white p-5 rounded-2xl border border-rose-200/80 shadow-sm">
+              <span class="text-[9px] font-mono text-rose-700 font-bold uppercase tracking-wider">FOUNDATIONAL HABIT</span>
+              <h4 class="font-serif text-lg font-bold text-burgundy mt-0.5">Care Notes & Hydration Reminders</h4>
+              <p class="text-xs text-gray-600 mt-1 leading-relaxed font-light">
+                Aryan establishes a morning habit: checking on Yashasvi’s college schedule, ensuring hydration, and reminding her to avoid overthinking.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="relative">
+            <div class="absolute -left-[31px] sm:-left-[41px] top-0 w-5 h-5 rounded-full bg-burgundy border-4 border-paper shadow"></div>
+            <div class="bg-white p-5 rounded-2xl border border-rose-200/80 shadow-sm">
+              <span class="text-[9px] font-mono text-rose-700 font-bold uppercase tracking-wider">DEVOTIONAL ELEVATION</span>
+              <h4 class="font-serif text-lg font-bold text-burgundy mt-0.5">"To Worship My Devi"</h4>
+              <p class="text-xs text-gray-600 mt-1 leading-relaxed font-light">
+                Elevating romantic affection to spiritual honor, Aryan sees Yashasvi as his 'Devi'—sharing reel messages celebrating devotion, shringaar, and viewing love as sadhana.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="relative">
+            <div class="absolute -left-[31px] sm:-left-[41px] top-0 w-5 h-5 rounded-full bg-gold border-4 border-paper shadow"></div>
+            <div class="bg-white p-5 rounded-2xl border border-rose-200/80 shadow-sm">
+              <span class="text-[9px] font-mono text-rose-700 font-bold uppercase tracking-wider">SYNCHRONICITY</span>
+              <h4 class="font-serif text-lg font-bold text-burgundy mt-0.5">11:11 Wishes & Tarot Guidance</h4>
+              <p class="text-xs text-gray-600 mt-1 leading-relaxed font-light">
+                Exchanging 11:11 wishes and tarot reel posts (111 / 555 energy) focusing on overcoming family pressure, healing distance, and patient timing.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="relative">
+            <div class="absolute -left-[31px] sm:-left-[41px] top-0 w-5 h-5 rounded-full bg-rose-800 border-4 border-paper shadow"></div>
+            <div class="bg-white p-5 rounded-2xl border border-rose-200/80 shadow-sm">
+              <span class="text-[9px] font-mono text-rose-700 font-bold uppercase tracking-wider">DESTINATION</span>
+              <h4 class="font-serif text-lg font-bold text-burgundy mt-0.5">A Prayer For Parents' Blessing</h4>
+              <p class="text-xs text-gray-600 mt-1 leading-relaxed font-light">
+                "I wish this call may be from u with gud news tht pur parents accepted usss." The ultimate desire: building a life fully backed by both families.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="border-t border-burgundy/20 pt-4 flex justify-between text-xs text-gray-500 font-mono">
+        <span>YASHASVI & ARYAN</span>
+        <span>TOGETHER MAGAZINE</span>
+      </div>
+    </section>
+
+    <!-- PAGE 6: CUTE MOMENTS & RECREATED CHATS -->
+    <section id="page-6" class="magazine-page page-break paper-texture rounded-3xl overflow-hidden min-h-[1080px] p-8 sm:p-14 flex flex-col justify-between border border-rose-200/60">
+      <div>
+        <!-- Page Header -->
+        <div class="flex justify-between items-center border-b border-burgundy/20 pb-3 mb-8 text-xs text-gray-600 font-mono">
+          <span>VOLUME I • MESSENGER ARCHIVE</span>
+          <span class="font-bold text-burgundy uppercase">RECREATED MOMENTS</span>
+          <span>PAGE 06</span>
+        </div>
+
+        <div class="mb-6">
+          <span class="text-[10px] font-mono text-rose-800 font-bold tracking-widest uppercase">AUTHENTIC CHAT SNIPPETS</span>
+          <h2 class="font-serif text-4xl font-bold text-burgundy mt-1">Recreated Chat Highlights</h2>
+          <p class="text-xs text-gray-600 mt-2 font-light max-w-xl">
+            Excerpts taken directly from messages and notes sent by Aryan to Yashasvi.
+          </p>
+        </div>
+
+        <!-- Chat Cards -->
+        <div class="space-y-6 mb-8 max-w-xl mx-auto">
+          
+          <!-- Card 1 -->
+          <div class="bg-white p-6 rounded-2xl border border-rose-200/80 shadow-md relative">
+            <div class="flex items-center gap-3 border-b border-gray-100 pb-3 mb-3">
+              <div class="w-8 h-8 rounded-full bg-burgundy text-white font-serif font-bold text-xs flex items-center justify-center">A</div>
+              <div>
+                <h4 class="text-xs font-bold text-burgundy font-serif">Aryan</h4>
+                <p class="text-[10px] font-mono text-gray-400">Morning Care Protocol • 5:14 PM</p>
+              </div>
+              <span class="ml-auto text-[10px] font-mono bg-rose-100 text-rose-800 px-2 py-0.5 rounded-full font-bold">FAVORITE</span>
+            </div>
+            
+            <div class="bg-blush/50 p-4 rounded-xl text-xs text-burgundy leading-relaxed font-sans border border-rose-200/40">
+              Good morning meri jaan ❤️<br><br>
+              College jaate waqt aur wahan:<br>
+              • Stay hydrated<br>
+              • Kuch bhi ho toh mujhe batana<br>
+              • Zyada stress mat lena, main hoon na<br>
+              • Overthink mat karna, sab theek hoga<br>
+              • Apna khayal rakhna properly<br><br>
+              I may not be there physically, but I’m always with you ❤️ Love you
+            </div>
+            
+            <div class="mt-3 flex justify-between items-center text-[10px] text-gray-400 italic">
+              <span>Saved in Notes Archive</span>
+              <span class="font-bold text-burgundy">Green Flag Standard</span>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="bg-white p-6 rounded-2xl border border-rose-200/80 shadow-md relative">
+            <div class="flex items-center gap-3 border-b border-gray-100 pb-3 mb-3">
+              <div class="w-8 h-8 rounded-full bg-burgundy text-white font-serif font-bold text-xs flex items-center justify-center">A</div>
+              <div>
+                <h4 class="text-xs font-bold text-burgundy font-serif">Aryan</h4>
+                <p class="text-[10px] font-mono text-gray-400">Early Dawn Wish • 5:56 AM</p>
+              </div>
+              <span class="ml-auto text-[10px] font-mono bg-gold/20 text-gold font-bold px-2 py-0.5 rounded-full">HEARTFELT</span>
+            </div>
+            
+            <div class="bg-blush/50 p-4 rounded-xl text-xs text-burgundy leading-relaxed font-sans border border-rose-200/40">
+              I wish this call may be from u with gud news tht pur parents accepted usss 🥹❤️
+            </div>
+
+            <div class="mt-3 flex justify-between items-center text-[10px] text-gray-400 italic">
+              <span>Sent via WhatsApp</span>
+              <span class="font-bold text-burgundy">Unspoken Wish</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Quick Matrix -->
+        <div class="grid grid-cols-2 gap-4">
+          <div class="bg-white p-4 rounded-xl border border-rose-200/80 flex items-center gap-3">
+            <div class="p-2.5 bg-rose-100 text-rose-800 rounded-lg"><i data-lucide="utensils" class="w-4 h-4"></i></div>
+            <div>
+              <span class="text-[9px] font-mono text-gray-400 uppercase font-bold">Food Rule</span>
+              <p class="text-xs font-bold text-burgundy">"Marriage tip: Feed her on time!"</p>
+            </div>
+          </div>
+
+          <div class="bg-white p-4 rounded-xl border border-rose-200/80 flex items-center gap-3">
+            <div class="p-2.5 bg-rose-100 text-rose-800 rounded-lg"><i data-lucide="heart" class="w-4 h-4"></i></div>
+            <div>
+              <span class="text-[9px] font-mono text-gray-400 uppercase font-bold">Reel Sender</span>
+              <p class="text-xs font-bold text-burgundy">Aryan sends 90%+ love reels</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Footer -->
+      <div class="border-t border-burgundy/20 pt-4 flex justify-between text-xs text-gray-500 font-mono">
+        <span>YASHASVI & ARYAN</span>
+        <span>TOGETHER MAGAZINE</span>
+      </div>
+    </section>
+
+    <!-- PAGE 7: FEATURE STORY (EDITORIAL ESSAY) -->
+    <section id="page-7" class="magazine-page page-break paper-texture rounded-3xl overflow-hidden min-h-[1080px] p-8 sm:p-14 flex flex-col justify-between border border-rose-200/60">
+      <div>
+        <!-- Page Header -->
+        <div class="flex justify-between items-center border-b border-burgundy/20 pb-3 mb-6 text-xs text-gray-600 font-mono">
+          <span>VOLUME I • FEATURE ESSAY</span>
+          <span class="font-bold text-burgundy uppercase">THE SANCTUARY WE BUILT</span>
+          <span>PAGE 07</span>
+        </div>
+
+        <!-- Article Headline -->
+        <div class="text-center max-w-xl mx-auto mb-8">
+          <span class="text-[10px] font-mono text-rose-800 font-bold tracking-[0.3em] uppercase">COVER STORY</span>
+          <h2 class="font-serif text-3xl sm:text-4xl font-bold text-burgundy mt-1 leading-tight">The Sanctuary We Built Across Physical Distance</h2>
+          <p class="font-serif italic text-sm text-gray-600 mt-2">A longform exploration into love, sadhana, and unshakeable commitment.</p>
+          <div class="w-12 h-0.5 bg-burgundy/40 mx-auto mt-4"></div>
+        </div>
+
+        <!-- Multi-Column Article Layout -->
+        <article class="font-serif text-xs sm:text-sm text-gray-800 leading-relaxed text-justify space-y-4">
+          <p class="drop-cap">
+            In a world that moves with frantic velocity, where connections often flicker and fade across backlit glass, there are stories that refuse to be lightweight. The relationship between Yashasvi and Aryan is built not on casual glances, but on the steady, unyielding rhythmic pulse of continuous devotion. To observe their digital footprint is to witness a sacred architecture being built—brick by brick, message by message, reel by reel—across physical distance.
+          </p>
+
+          <p>
+            Distance has a way of testing the structural integrity of love. It threatens to amplify doubts, turns silence into anxiety, and transforms simple days into heavy weight. Yet, for Aryan and Yashasvi, distance became the very canvas upon which their maturity was forged. Rather than allowing space to create drift, Aryan transformed every sunrise into a sanctuary of check-ins. His morning notes to Yashasvi—reminding her to stay hydrated while heading to college, urging her not to overthink, offering the quiet comfort of <em>"main hoon na"</em>—were never mere routine text. They were daily reaffirmations that no matter how many miles separated their physical bodies, her peace of mind remained his highest priority.
+          </p>
+
+          <!-- Dynamic Pull Quote Callout -->
+          <div class="my-6 p-6 bg-white border-l-4 border-burgundy rounded-r-2xl italic text-burgundy text-sm sm:text-base shadow-sm">
+            "When you keep her happy, it’s your sadhana. And when you do your sadhana honestly, blessings follow. My sadhana starts and ends with you."
+          </div>
+
+          <p>
+            What makes their story profoundly distinct is its spiritual depth. In modern romance, partners often speak in terms of temporary emotions. But in Aryan’s eyes, Yashasvi is elevated to something eternal—his <em>Devi</em>, his <em>Dharma Pathni</em>, the center of his sadhana. He frequently shared devotional reflections echoing the belief that one need not travel to distant temples to find grace when the divine already resides in the soul of the person you love. Caring for her, protecting her happiness, wiping away tears, and praying for her wellbeing became his spiritual practice.
+          </p>
+
+          <p>
+            Yet, like any true romance worth writing about, their journey was not without its shadows and heavy prayers. The quiet ache for complete family acceptance, the silent hope that every incoming phone call might carry the long-awaited good news that their parents had blessed their union, hung delicately over their conversations. But true love does not run when confronted with obstacles; it grows quieter, stronger, and more determined. They held fast to 11:11 wishes, tarot symbols of patience and reconciliation (111 and 555 energy), choosing always to choose peace over ego, understanding over conflict, and each other above all else.
+          </p>
+        </article>
+      </div>
+
+      <!-- Footer -->
+      <div class="border-t border-burgundy/20 pt-4 flex justify-between text-xs text-gray-500 font-mono">
+        <span>YASHASVI & ARYAN</span>
+        <span>TOGETHER MAGAZINE</span>
+      </div>
+    </section>
+
+    <!-- PAGE 8: BACK COVER PAGE -->
+    <section id="page-8" class="magazine-page page-break bg-burgundy text-white rounded-3xl overflow-hidden min-h-[1080px] p-8 sm:p-14 flex flex-col justify-between relative border border-rose-900 shadow-2xl">
+      <!-- Glow background overlay -->
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-rose-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+      <!-- Running Header -->
+      <div class="flex justify-between items-center border-b border-white/10 pb-4 relative z-10 text-xs font-mono text-rose-300">
+        <span>TOGETHER MAGAZINE • ISSUE NO. 01</span>
+        <span class="uppercase">THE FOREVER CHAPTER</span>
+        <span>BACK COVER</span>
+      </div>
+
+      <!-- Center Main Closing Statement -->
+      <div class="my-auto text-center max-w-2xl mx-auto relative z-10 py-12">
+        <i data-lucide="quote" class="w-12 h-12 text-rose-400/40 mx-auto mb-6"></i>
+        
+        <blockquote class="font-serif text-3xl sm:text-5xl font-light text-rose-100 leading-snug italic mb-8">
+          "I might not be your first love, but I intend to be your last. In this lifetime and every one after—it is always you."
+        </blockquote>
+
+        <div class="w-16 h-0.5 bg-gold mx-auto mb-6"></div>
+        <p class="text-xs uppercase tracking-[0.4em] font-medium text-gold font-mono">YASHASVI & ARYAN</p>
+        <p class="text-[10px] text-gray-400 font-mono mt-2">EST. FOREVER • HELD IN DIVINE FAITH</p>
+      </div>
+
+      <!-- Footer Bar with Barcode -->
+      <div class="relative z-10 border-t border-white/10 pt-6 flex flex-wrap justify-between items-end gap-4">
+        <div>
+          <p class="text-xs text-rose-200 font-serif italic">TOGETHER Magazine — Collector's Edition</p>
+          <p class="text-[10px] text-gray-400 font-mono mt-1">Custom crafted from private digital archives.</p>
+        </div>
+
+        <!-- Back Cover Barcode -->
+        <div class="bg-white p-2 rounded text-black flex items-center space-x-2">
+          <div class="flex items-end h-6 space-x-0.5 font-mono">
+            <div class="w-0.5 h-full bg-black"></div>
+            <div class="w-1 h-full bg-black"></div>
+            <div class="w-1.5 h-full bg-black"></div>
+            <div class="w-0.5 h-full bg-black"></div>
+            <div class="w-2 h-full bg-black"></div>
+            <div class="w-1 h-full bg-black"></div>
+            <div class="w-0.5 h-full bg-black"></div>
+            <div class="w-1 h-full bg-black"></div>
+          </div>
+          <span class="text-[9px] font-mono font-bold">2026-1111-TOGETHER</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- JAVASCRIPT FOR INTERACTIVITY & VIEW MODES -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Chart.js initialization for Page 4
+    const ctx = document.getElementById('timeDistributionChartPage4').getContext('2d');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['4-8 AM', '8-12 PM', '12-4 PM', '4-8 PM', '8-12 AM', '12-4 AM'],
+        datasets: [{
+          label: 'Activity',
+          data: [42, 18, 15, 25, 30, 55],
+          backgroundColor: [
+            '#e11d48',
+            '#fda4af',
+            '#fda4af',
+            '#fda4af',
+            '#9f1239',
+            '#3b0b13'
+          ],
+          borderRadius: 6
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { grid: { display: false }, ticks: { font: { size: 9 } } },
+          y: { grid: { color: 'rgba(0,0,0,0.05)' }, ticks: { font: { size: 9 } } }
+        }
+      }
+    });
+
+    // View Mode Switcher (Single Scroll vs 2-Page Magazine Spread)
+    function setViewMode(mode) {
+      const container = document.getElementById('magazineContainer');
+      const singleBtn = document.getElementById('viewSingleBtn');
+      const spreadBtn = document.getElementById('viewSpreadBtn');
+      const pages = document.querySelectorAll('.magazine-page');
+
+      if (mode === 'spread') {
+        container.classList.remove('max-w-4xl', 'space-y-12');
+        container.classList.add('max-w-7xl', 'grid', 'grid-cols-1', 'lg:grid-cols-2', 'gap-8');
+        
+        pages.forEach((page, index) => {
+          if (index % 2 === 0) {
+            page.classList.add('spine-shadow-left');
+            page.classList.remove('spine-shadow-right');
+          } else {
+            page.classList.add('spine-shadow-right');
+            page.classList.remove('spine-shadow-left');
+          }
+        });
+
+        if (spreadBtn) spreadBtn.className = "px-3 py-1.5 rounded-lg transition flex items-center gap-1.5 bg-rose-600 text-white font-medium shadow";
+        if (singleBtn) singleBtn.className = "px-3 py-1.5 rounded-lg transition flex items-center gap-1.5 text-gray-400 hover:text-white";
+      } else {
+        container.classList.remove('max-w-7xl', 'grid', 'grid-cols-1', 'lg:grid-cols-2', 'gap-8');
+        container.classList.add('max-w-4xl', 'space-y-12');
+
+        pages.forEach(page => {
+          page.classList.remove('spine-shadow-left', 'spine-shadow-right');
+        });
+
+        if (singleBtn) singleBtn.className = "px-3 py-1.5 rounded-lg transition flex items-center gap-1.5 bg-rose-600 text-white font-medium shadow";
+        if (spreadBtn) spreadBtn.className = "px-3 py-1.5 rounded-lg transition flex items-center gap-1.5 text-gray-400 hover:text-white";
+      }
+    }
+  </script>
+</body>
+</html>
